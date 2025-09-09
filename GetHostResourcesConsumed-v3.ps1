@@ -64,6 +64,7 @@ Function Get-HvStats {
 	return $allstats
 }
 $timestamp = Get-Date -Format o | ForEach-Object { $_ -replace ":", "." }
-Get-HvStats -ComputerName slcdhyp01.leadventure.dev,slcdhyp02.leadventure.dev,slcdhyp03.leadventure.dev,slcdhyp04.leadventure.dev,slcdhyp05.leadventure.dev,slcdhyp06.leadventure.dev,slcdhyp07.leadventure.dev | Export-CSV -Path "C:\Scripts\ScriptResults\ResourceConsumption$timestamp.csv"
+Get-HvStats -ComputerName <computername> | Export-CSV -Path "C:\Scripts\ScriptResults\ResourceConsumption$timestamp.csv"
 
-Send-MailMessage -From 'slcdhyp* <slcdevcluster@leadventure.com>' -To 'Daniel Niska <daniel.niska@leadventure.com>' -Subject 'Resource Report for SLC Dev Cluster Nodes' -Attachment "C:\Scripts\ScriptResults\ResourceConsumption$timestamp.csv" -SmtpServer 'o365.smtp.relay'
+
+Send-MailMessage -From '<email>' -To '<email>' -Subject 'subject' -Attachment "C:\Scripts\ScriptResults\ResourceConsumption$timestamp.csv" -SmtpServer '<relay>'
